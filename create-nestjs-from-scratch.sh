@@ -29,6 +29,7 @@ cat <<EOF > tsconfig.json
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
+    "strictNullChecks": true,
     "sourceMap": true,
     "outDir": "./dist",
     "rootDir": "./",
