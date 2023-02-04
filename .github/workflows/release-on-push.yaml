@@ -22,6 +22,6 @@ jobs:
       - run: npm ci
         env:
           NODE_ENV: development
-      - run: npm run publish
+      - run: npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
