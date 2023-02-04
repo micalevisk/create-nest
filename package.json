@@ -1,0 +1,23 @@
+{
+  "name": "create-nest",
+  "version": "1.0.0",
+  "description": "Bootstraps a lean NestJS Express-based app to help on creating minimal reproduction of issues. Just run `npm init nest` or `npx create-nest`",
+  "bin": {
+    "create-nest": "create-nestjs-from-scratch.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micalevisk/create-nest.git"
+  },
+  "keywords": ["nestjs", "nodejs", "express", "cli"],
+  "author": "Micael Levi L. C.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micalevisk/create-nest/issues"
+  },
+  "homepage": "https://github.com/micalevisk/create-nest#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
