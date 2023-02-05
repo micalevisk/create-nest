@@ -4,8 +4,12 @@
 # This requires NPM v9+ and npx(1) v9+
 #
 
-mkdir ${1:-"nestjs-app"}
-cd $_
+app_dir=${1:-"nestjs-app"}
+
+[ -z "$app_dir" ] && exit 1
+
+mkdir $app_dir
+cd $app_dir
 npm init --yes
 
 npm install reflect-metadata@latest @nestjs/common@latest @nestjs/core@latest
@@ -79,3 +83,5 @@ async function bootstrap() {
 }
 bootstrap();
 EOF
+
+echo -e "\nApp created at '$app_dir' directory!"
