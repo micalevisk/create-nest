@@ -84,4 +84,15 @@ async function bootstrap() {
 bootstrap();
 EOF
 
+cat <<EOF > .gitignore
+node_modules/
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+EOF
+
+
 echo -e "\nApp created at '$app_dir' directory!"
