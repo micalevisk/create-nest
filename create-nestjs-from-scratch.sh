@@ -85,6 +85,7 @@ bootstrap();
 EOF
 
 cat <<EOF > .gitignore
+dist/
 node_modules/
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
