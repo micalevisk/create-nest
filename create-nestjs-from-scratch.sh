@@ -14,7 +14,7 @@ npm init --yes
 
 npm install reflect-metadata@latest @nestjs/common@latest @nestjs/core@latest
 npm i @nestjs/platform-express@latest
-npm i -D typescript@^4 @types/node @nestjs/cli@latest @nestjs/schematics@latest
+npm i -D typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
 
 npm pkg delete scripts.test
 npm pkg set main="dist/src/main"
