@@ -61,6 +61,7 @@ cat <<EOF > nest-cli.json
     "spec": false
   },
   "compilerOptions": {
+    "manualRestart": true,
     "tsConfigPath": "./tsconfig.build.json",
     "webpack": false,
     "deleteOutDir": true,
