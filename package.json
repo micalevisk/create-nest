@@ -1,10 +1,13 @@
 {
   "name": "create-nest",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Bootstraps a lean NestJS Express-based app to help on creating minimal reproduction of issues. Just run `npm init nest` or `npx create-nest`",
   "bin": {
     "create-nest": "create-nestjs-from-scratch.sh"
   },
+  "files": [
+    "create-nestjs-from-scratch.sh"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/micalevisk/create-nest.git"
