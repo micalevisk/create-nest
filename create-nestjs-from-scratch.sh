@@ -12,7 +12,7 @@ mkdir $app_dir
 cd $app_dir
 npm init --yes
 
-npm install reflect-metadata@latest @nestjs/common@latest @nestjs/core@latest
+npm install @nestjs/common@latest @nestjs/core@latest
 npm i @nestjs/platform-express@latest
 npm i -D typescript@^5 @types/node @nestjs/cli@latest
 
