@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 # (c) https://dev.to/micalevisk/5-steps-to-create-a-bare-minimum-nestjs-app-from-scratch-5c3b
-# This requires NPM v9+ and npx(1) v9+
 #
 
 app_dir=${1:-"nestjs-app"}
@@ -10,11 +9,48 @@ app_dir=${1:-"nestjs-app"}
 
 mkdir $app_dir
 cd $app_dir
-npm init --yes
 
-npm install @nestjs/common@latest @nestjs/core@latest
-npm i @nestjs/platform-express@latest
-npm i -D typescript@^5 @types/node @nestjs/cli@latest
+
+## Using NPM as the default package manager if we didn't succeeded on inferring the invoked one
+package_manager="npm"
+case "$0" in
+  *pnpm*)
+    package_manager="pnpm"
+    ;;
+
+  *npm*)
+    package_manager="npm"
+    ;;
+
+  *yarn*)
+    package_manager="yarn"
+    ;;
+esac
+
+echo "Using $package_manager as the package manager!"
+
+case "$package_manager" in
+  *pnpm*)
+    pnpm init
+    pnpm install reflect-metadata@0.1 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    pnpm install --save-dev typescript@^5 @types/node @nestjs/cli@latest
+
+    ;;
+
+  *npm*)
+    npm init --yes
+    npm install reflect-metadata@0.1 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    npm install --save-dev typescript@^5 @types/node @nestjs/cli@latest
+
+    ;;
+
+  *yarn*)
+    yarn init --yes
+    yarn add reflect-metadata@0.1 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    yarn add --save-dev typescript@^5 @types/node @nestjs/cli@latest
+    ;;
+esac
+
 
 npm pkg delete scripts.test
 npm pkg set main="dist/src/main"
