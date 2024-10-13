@@ -68,6 +68,7 @@ cat <<EOF > tsconfig.json
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "target": "ES2021",
     "strictNullChecks": true,
     "sourceMap": true,
