@@ -1,6 +1,6 @@
 {
   "name": "create-nest",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "description": "Bootstraps a lean NestJS Express-based app to help on creating minimal reproduction of issues. Just run `npm init nest` or `npx create-nest`",
   "bin": {
     "create-nest": "create-nestjs-from-scratch.sh"
