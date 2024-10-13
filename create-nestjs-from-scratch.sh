@@ -32,21 +32,21 @@ echo "Using $package_manager as the package manager!"
 case "$package_manager" in
   *pnpm*)
     pnpm init
-    pnpm install reflect-metadata@0.1 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    pnpm install reflect-metadata@0.2 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
     pnpm install --save-dev typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
 
     ;;
 
   *npm*)
     npm init --yes
-    npm install reflect-metadata@0.1 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    npm install reflect-metadata@0.2 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
     npm install --save-dev typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
 
     ;;
 
   *yarn*)
     yarn init --yes
-    yarn add reflect-metadata@0.1 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    yarn add reflect-metadata@0.2 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
     yarn add --save-dev typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
     ;;
 esac
@@ -68,6 +68,7 @@ cat <<EOF > tsconfig.json
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "target": "ES2021",
     "strictNullChecks": true,
     "sourceMap": true,
