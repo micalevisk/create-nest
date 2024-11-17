@@ -55,6 +55,7 @@ esac
 npm pkg delete scripts.test
 npm pkg set main="dist/src/main"
 npm pkg set scripts.build="nest build"
+npm pkg set scripts.start="nest start"
 npm pkg set scripts.start:dev="nest start --watch"
 npm pkg set scripts.start:prod="node ."
 
