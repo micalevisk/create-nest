@@ -1,0 +1,41 @@
+name: Run few tests using the latest published version
+
+on:
+  ## Allow triggering this workflow manually via GitHub CLI/web
+  workflow_dispatch:
+
+jobs:
+  test_unix:
+    timeout-minutes: 3
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        shell: [sh, bash]
+        os: [macos-latest, ubuntu-latest]
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ' lts/*'
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+      - run: npm create nest@latest
+  ## A dedicated job for Windows because it supports a bunch of shells that are not available for other OS
+  test_windows:
+    timeout-minutes: 3
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        shell: [pwsh, cmd, PowerShell]
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ' lts/*'
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+      - run: npm create nest@latest
