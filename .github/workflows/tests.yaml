@@ -18,9 +18,8 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: ' lts/*'
+          node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
-          cache: npm
       - run: npm create nest@latest
   ## A dedicated job for Windows because it supports a bunch of shells that are not available for other OS
   test_windows:
@@ -35,7 +34,6 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: ' lts/*'
+          node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
-          cache: npm
       - run: npm create nest@latest
