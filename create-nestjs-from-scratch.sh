@@ -70,7 +70,7 @@ cat <<EOF > tsconfig.json
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "target": "ES2021",
+    "target": "ES2024",
     "strictNullChecks": true,
     "sourceMap": true,
     "outDir": "./dist",
