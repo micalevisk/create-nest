@@ -32,22 +32,22 @@ echo "Using $package_manager as the package manager!"
 case "$package_manager" in
   *pnpm*)
     pnpm init
-    pnpm install reflect-metadata@0.2 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
-    pnpm install --save-dev typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
+    pnpm install reflect-metadata@latest @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    pnpm install --save-dev typescript@6 @types/node @nestjs/cli@latest @nestjs/schematics@latest
 
     ;;
 
   *npm*)
     npm init --yes
-    npm install reflect-metadata@0.2 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
-    npm install --save-dev typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
+    npm install reflect-metadata@latest @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    npm install --save-dev typescript@6 @types/node @nestjs/cli@latest @nestjs/schematics@latest
 
     ;;
 
   *yarn*)
     yarn init --yes
-    yarn add reflect-metadata@0.2 @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
-    yarn add --save-dev typescript@^5 @types/node @nestjs/cli@latest @nestjs/schematics@latest
+    yarn add reflect-metadata@latest @nestjs/common@latest @nestjs/core@latest @nestjs/platform-express@latest
+    yarn add --save-dev typescript@6 @types/node @nestjs/cli@latest @nestjs/schematics@latest
     ;;
 esac
 
@@ -55,7 +55,6 @@ esac
 npm pkg delete scripts.test
 npm pkg set main="dist/src/main"
 npm pkg set scripts.build="nest build"
-npm pkg set scripts.start="nest start"
 npm pkg set scripts.start:dev="nest start --watch"
 npm pkg set scripts.start:prod="node ."
 
@@ -63,27 +62,34 @@ mkdir src
 cat <<EOF > tsconfig.json
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "target": "ES2024",
-    "strictNullChecks": true,
+    "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./",
-    "baseUrl": "./",
+    "incremental": true,
     "skipLibCheck": true,
-    "incremental": true
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "types": ["node"]
   }
 }
 EOF
 cat <<EOF > tsconfig.build.json
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src"
+  },
+  "include": ["src"],
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }
 EOF
@@ -96,12 +102,10 @@ cat <<EOF > nest-cli.json
   "entryFile": "main",
   "language": "ts",
   "generateOptions": {
-    "spec": false
+    "spec": true
   },
   "compilerOptions": {
-    "manualRestart": true,
     "tsConfigPath": "./tsconfig.build.json",
-    "webpack": false,
     "deleteOutDir": true,
     "assets": [],
     "watchAssets": false,
